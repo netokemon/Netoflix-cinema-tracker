@@ -1,8 +1,6 @@
 package br.com.neto.netoflix;
 
-import br.com.neto.netoflix.model.DadosSerie;
-import br.com.neto.netoflix.service.ConsumoAPI;
-import br.com.neto.netoflix.service.ConverteDados;
+import br.com.neto.netoflix.principal.Principal;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,10 +14,7 @@ public class NetoflixApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		var consumoAPI = new ConsumoAPI();
-		ConverteDados conversor = new ConverteDados();
-		String json = consumoAPI.obterDados("http://www.omdbapi.com/?t=teen+wolf&apikey=&");
-		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
-		System.out.println(dados);
+		Principal principal = new Principal();
+		principal.exibeMenu();
 	}
 }
